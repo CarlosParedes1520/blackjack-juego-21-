@@ -6,13 +6,13 @@
         <button type="submit" id="btnNuevo" class="btn btn-danger ms-2" 
         (click)="btnNuevo2()" >Nuevo Juego</button>
         
-        <button type="submit" id="btnPedir" class="btn btn-primary  ms-2" 
+        <button type="submit" id="btnPedir" class="btn btn-primary  ms-2 " 
             (click)="btnPedir2()"
             [disabled]="puntosJugador > 21 ||  this.puntosJugador === 21 ">
             Pedir carta
         </button>
         
-            <button type="submit" id="btnDetener" class="btn btn-primary ms-2"
+            <button type="submit" id="btnDetener" class="btn btn-primary ms-2 "
             [disabled]="puntosJugador > 21 ||  this.puntosJugador === 21 "
             (click)="btnDetener2()">
             Detener
