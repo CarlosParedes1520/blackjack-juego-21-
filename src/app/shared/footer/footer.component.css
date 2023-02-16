@@ -1,0 +1,12 @@
+
+@media screen and (max-width:785px) {
+    .contenido{
+        margin-top: 30%;
+    }
+}
+
+@media screen and (max-width:667px) {
+    .contenido{
+        display: none !important;
+    }
+}

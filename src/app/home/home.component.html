@@ -1,0 +1,50 @@
+  
+    
+    
+    <div id="divBotones" class="col-12 text-center mt-3">
+
+        <button type="submit" id="btnNuevo" class="btn btn-danger ms-2" 
+        (click)="btnNuevo2()" >Nuevo Juego</button>
+        
+        <button type="submit" id="btnPedir" class="btn btn-primary  ms-2" 
+            (click)="btnPedir2()"
+            [disabled]="puntosJugador > 21 ||  this.puntosJugador === 21 ">
+            Pedir carta
+        </button>
+        
+            <button type="submit" id="btnDetener" class="btn btn-primary ms-2"
+            [disabled]="puntosJugador > 21 ||  this.puntosJugador === 21 "
+            (click)="btnDetener2()">
+            Detener
+        </button> 
+
+    </div>
+    
+   
+    
+    <p>{{resultado}}</p>
+
+    <div class="d-flex justify-content-between align-items-center contenedorCard">
+        
+        <div class="ss ms-2">
+
+            <h1>Jugador 1 - <small>{{puntosHTML0}}</small></h1>
+            <div id="jugador-cartas"  #card>
+                <!-- <img class="carta" [src]="imgCarta"> -->
+            </div>
+
+        </div>
+    
+
+    
+        <div class="ss">
+
+            <h1>Computadora - <small>{{puntosHTML1}}</small></h1>
+            <div id="computadora-cartas" #card2>
+                <!-- <img class="carta" [src]="imgCarta"> -->
+            </div>
+
+        </div>
+        
+    </div>
+    
