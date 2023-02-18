@@ -8,13 +8,24 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent {
 
-  // Referencias del HTML
-  btnPedir   = document.querySelector('#btnPedir');
-  btnDetener = document.querySelector('#btnDetener');
-  btnNuevo   = document.querySelector('#btnNuevo');
+  // Referencias del HTML (Variables del dom)
+  @ViewChild('btnPedir') btnPedir: ElementRef | undefined;
+  @ViewChild('btnDetener') btnDetener: ElementRef | undefined;
+  @ViewChild('btnNuevo') btnNuevo: ElementRef | undefined;
+  @ViewChild('card') card: ElementRef | undefined;
+  @ViewChild('card2') card2: ElementRef | undefined;
+
+  // variables
   detenerJuego: boolean = false;
- 
   resultado = "";
+  title = 'juego21';
+  deck: any  [] = [];
+  tipos      = ['C','D','H','S'];
+  especiales = ['A','J','Q','K'];
+  puntosJugador = 0;
+  puntosComputadora = 0;
+  puntosHTML0: number = 0;
+  puntosHTML1: number = 0;
  
    ngOnInit(): void {
      this.crearDeck();
@@ -24,27 +35,6 @@ export class HomeComponent {
  
    }
  
-   @ViewChild('card') card: ElementRef | undefined;
-   @ViewChild('card2') card2: ElementRef | undefined;
- 
-   title = 'juego21';
- 
- 
- 
- deck: any  [] = [];
- tipos      = ['C','D','H','S'];
- especiales = ['A','J','Q','K'];
- 
- puntosJugador = 0;
- puntosComputadora = 0;
- 
- // imgCarta: string = "";
- 
-  divCartasJugador     = document.getElementById('jugador-cartas') || null || undefined;
-  divCartasComputadora = document.getElementById('computadora-cartas') || null || undefined ;
- 
-  puntosHTML0: number = 0;
-  puntosHTML1: number = 0;
  
  // Esta función crea un nuevo deck
   crearDeck = () => {
