@@ -14,7 +14,8 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

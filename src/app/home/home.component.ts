@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent {
   btnPedir   = document.querySelector('#btnPedir');
   btnDetener = document.querySelector('#btnDetener');
   btnNuevo   = document.querySelector('#btnNuevo');
+  detenerJuego: boolean = false;
  
   resultado = "";
  
@@ -134,13 +136,15 @@ export class HomeComponent {
  
  btnDetener2 = () => {
    this.resultado = "";
-   (document.querySelector('#btnPedir')as HTMLInputElement).disabled = true;
-   // (document.querySelector('#btnNuevo')as HTMLInputElement).disabled = true;
- 
-   this.calcularGanador(this.puntosHTML1, this.puntosHTML0) 
+   (document.querySelector('#btnPedir')as HTMLInputElement).disabled = true;   
+   this.detenerJuego = true;
+   this.calcularGanador(this.puntosHTML1, this.puntosHTML0) ;
+
+
  };
  
  btnNuevo2 = () => {
+  this.detenerJuego = false;
    (document.querySelector('#btnPedir')as HTMLInputElement).disabled = false;
    // (document.querySelector('#btnNuevo')as HTMLInputElement).disabled = true;
  
@@ -168,47 +172,118 @@ export class HomeComponent {
    (document.querySelector('#btnPedir')as HTMLInputElement).disabled = true;
  }
  
-   if(puntosComputadora == 21 && puntosJugador === 21  ) {
+   if(puntosComputadora === 21 && puntosJugador === 21  ) {
      this.resultado ='Nadie gana :(';
      console.log('Nadie gana :C');
+     Swal.fire('Resultado', 'Empates 😒', 'error').then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
      return;
    } 
-    if (puntosJugador == 21 && puntosComputadora !== 21) {
- 
+    
+   if (puntosJugador == 21 && puntosComputadora !== 21) {
      this.resultado ='Jugador Gana';
      console.log('Jugador Gana');
+     Swal.fire('Resultado', 'Jugador Gana 😊', 'success').then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
      return;
      
    }
+
     if (puntosComputadora  == 21 && puntosJugador!== 21) {
      
      this.resultado ='Computadora Gana';
      console.log('Computadora Gana');
+     Swal.fire('Resultado', 'Computadora Gana 😊', 'success').then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
+
      return;
    }
     if (puntosComputadora > 21 && puntosJugador < 21) {
      this.resultado ='Jugador Gana';
      console.log('Jugador Gana');
+     Swal.fire('Resultado', 'Jugador Gana 😊', 'success').then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
      return;
    }
+   
     if (puntosJugador > 21 && puntosComputadora  < 21) {
      this.resultado ='Computadora Gana';
      console.log('Computadora Gana');
+     Swal.fire('Resultado', 'Computadora Gana 😊', 'success').then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
      return;
    }
+
     if (puntosJugador > 21 && puntosComputadora  > 21) {
      this.resultado ='Nadie Gana';
      console.log('Nadie Gana');
+     Swal.fire('Resultado', 'Nadie Gana 😢', 'error')
+     .then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      }
+    })
      return;
    }
+   
     if (puntosJugador >  puntosComputadora  && puntosJugador < 21) {
      this.resultado ='jugador Gana';
      console.log('jugador Gana');
+     
+     if (this.detenerJuego) {
+      Swal.fire('Resultado', 'Jugador Gana 😊', 'success')
+      .then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload()
+        }
+      })
+     }
      return;
    }
+
     if (puntosComputadora >  puntosJugador  && puntosComputadora < 21) {
      this.resultado ='Computadora  Gana';
      console.log('Computadora Gana');
+     
+     if (this.detenerJuego) {
+      Swal.fire('Resultado', 'Computadora Gana 😊', 'success')
+      .then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload()
+        }
+      })
+      
+     }
+     
+     return;
+   }
+    if (puntosComputadora < 21  && puntosComputadora < 21 &&  puntosComputadora === puntosComputadora) {
+     this.resultado ='Empates';
+     console.log('Empates');
+   
+    if (this.detenerJuego) {
+      Swal.fire('Resultado', 'Empates 😒', 'error')
+      .then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload()
+        }
+      })
+     }
      return;
    }
  }

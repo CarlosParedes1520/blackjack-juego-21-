@@ -7,3 +7,13 @@
     height: auto;
     
 }
+
+
+.figure:hover > img {
+    transform: scale(1.1);
+  
+}
+.figure img{
+    transition: all .5s ease;
+}
+
